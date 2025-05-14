@@ -18,8 +18,8 @@ public class MovieController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Movie> getMovieById(@PathVariable Long movieId) {
-        return service.getMovieById(movieId)
+    public ResponseEntity<Movie> getMovieById(@PathVariable Long id) {
+        return service.getMovieById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -30,7 +30,7 @@ public class MovieController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMovie(Long id) {
+    public ResponseEntity<Void> deleteMovie(@PathVariable Long id) {
         return service.deleteMovie(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
 
